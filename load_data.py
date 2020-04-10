@@ -20,7 +20,20 @@ def load_dataset(filename, folder='data'):
 
     data.columns = columns
 
-    # Set index
-    data.set_index(['engine_id', 'cycle'], inplace=True)
-    
     return data
+
+def load_RUL_predictions(filename, folder='data'):
+    """
+    Returns the RUL predictions as pandas dataframe
+    """
+    
+    path = os.path.join(os.getcwd(), folder, filename)
+    
+    df = pd.read_csv(path, sep=';')
+    
+    df.set_index('id', inplace=True)
+    
+    return df
+    
+    
+
