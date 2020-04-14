@@ -7,7 +7,7 @@ def load_dataset(location_filename):
     Returns the txt file as pandas dataframe
     """   
     # Read data from text file
-    data = pd.read_csv(location_filename, header=None)
+    data = pd.read_csv(location_filename, header=None, sep=' ')
 
     # Drop extra columns
     data.drop([26,27], axis=1, inplace=True)
