@@ -2,15 +2,12 @@ import os
 import pandas as pd
 
 
-def load_dataset(filename, folder='data'):
+def load_dataset(location_filename):
     """
     Returns the txt file as pandas dataframe
-    """
-    
-    path = os.path.join(os.getcwd(), folder, filename)
-    
+    """   
     # Read data from text file
-    data = pd.read_csv(path, sep=" ", header=None)
+    data = pd.read_csv(location_filename, header=None)
 
     # Drop extra columns
     data.drop([26,27], axis=1, inplace=True)
@@ -22,14 +19,11 @@ def load_dataset(filename, folder='data'):
 
     return data
 
-def load_RUL_predictions(filename, folder='data'):
+def load_RUL_predictions(location_filename):
     """
     Returns the RUL predictions as pandas dataframe
-    """
-    
-    path = os.path.join(os.getcwd(), folder, filename)
-    
-    df = pd.read_csv(path, sep=';')
+    """    
+    df = pd.read_csv(location_filename, sep=';')
     
     df.set_index('id', inplace=True)
     
